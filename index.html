@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imposter: Local Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <div id="scr-settings" class="screen">
+            <h1>Imposter</h1>
+            <h2>Настройки Раунда</h2>
+            
+            <div class="form-group">
+                <label for="inp-players">Количество игроков (мин. 3):</label>
+                <input type="number" id="inp-players" value="4" min="3" max="20">
+            </div>
+
+            <div class="form-group">
+                <label for="inp-imposters">Количество импостеров:</label>
+                <input type="number" id="inp-imposters" value="1" min="1" max="5">
+            </div>
+
+            <div class="form-group">
+                <label>Время таймера:</label>
+                <div class="form-row">
+                    <input type="number" id="inp-min" value="2" min="0" max="59" placeholder="Мин">
+                    <input type="number" id="inp-sec" value="0" min="0" max="59" placeholder="Сек">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sel-theme">Выберите тему игры:</label>
+                <select id="sel-theme">
+                    <option value="cosmos">Космос 🚀</option>
+                    <option value="sport">Спорт ⚽</option>
+                    <option value="food">Еда и Кулинария 🍕</option>
+                    <option value="professions">Профессии 💼</option>
+                    <option value="animals">Животные 🦁</option>
+                    <option value="geography">Страны и Города 🌍</option>
+                </select>
+            </div>
+
+            <button class="btn" id="btn-start-setup">Старт</button>
+        </div>
+
+        <div id="scr-roles" class="screen hidden">
+            <h1>Раздача ролей</h1>
+            <h2 id="role-player-title">Игрок 1, твоя очередь</h2>
+            <p>Нажми на карту и удерживай её, чтобы тайно узнать свою роль.</p>
+
+            <div class="card-container">
+                <div class="card" id="role-card">
+                    <div class="card-face card-front">
+                        <div class="icon">?</div>
+                        <span>Удерживай</span>
+                    </div>
+                    <div class="card-face card-back" id="card-role-content">
+                        </div>
+                </div>
+            </div>
+
+            <button class="btn" id="btn-next-player" disabled>Следующий игрок</button>
+        </div>
+
+        <div id="scr-game" class="screen hidden">
+            <h1>Обсуждение</h1>
+            <div class="timer-display" id="timer-box">02:00</div>
+            
+            <div class="game-actions">
+                <button class="btn" id="btn-trigger-vote">Проголосовать</button>
+                <button class="btn btn-secondary" id="btn-trigger-guess">Угадать слово</button>
+            </div>
+        </div>
+
+        <div id="modal-guess" class="modal hidden">
+            <div class="screen" style="width: 100%; max-width: 400px;">
+                <h2>Угадать Слово</h2>
+                <p>Импостер, введи секретное слово. Ошибка означает мгновенный проигрыш!</p>
+                <div class="form-group">
+                    <input type="text" id="inp-guess-word" placeholder="Ваш ответ...">
+                </div>
+                <button class="btn" id="btn-submit-guess">Проверить</button>
+                <button class="btn btn-secondary" id="btn-close-guess" style="margin-top: 10px;">Отмена</button>
+            </div>
+        </div>
+
+        <div id="scr-voting" class="screen hidden">
+            <h1>Голосование</h1>
+            <h2 id="vote-player-title">Игрок 1, выбери Импостера</h2>
+            <p>Никому не показывай свой выбор!</p>
+
+            <div class="voting-grid" id="vote-options-box">
+                </div>
+
+            <button class="btn" id="btn-next-vote" disabled>Следующий</button>
+        </div>
+
+        <div id="scr-results" class="screen hidden">
+            <h1>Финал Игры</h1>
+            <div id="winner-banner" class="winner-title">ПОБЕДА</div>
+            <h2 id="imposters-reveal-text">Импостером был Игрок X</h2>
+            
+            <h3 style="text-align: left; margin-top: 20px; color: #ff8e8e;">Статистика голосов:</h3>
+            <div class="stats-container" id="stats-box">
+                </div>
+
+            <button class="btn" id="btn-restart">В главное меню</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

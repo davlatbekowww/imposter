@@ -1,0 +1,313 @@
+/* БАЗОВЫЕ СТИЛИ И КОСМИЧЕСКАЯ АТМОСФЕРА */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #150606, #0d0d0d);
+    color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+    text-align: center;
+}
+
+/* ЭКРАННЫЕ КОНТЕЙНЕРЫ */
+.screen {
+    background: rgba(30, 10, 10, 0.6);
+    border: 2px solid #ff2a2a;
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 0 25px rgba(255, 42, 42, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: #ff3e3e;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(255, 62, 62, 0.6);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+/* ФОРМЫ И ВВОД */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #ff8e8e;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+/* Стилизация инпутов и селектора тем */
+input, select {
+    width: 100%;
+    background: rgba(20, 5, 5, 0.8);
+    border: 1px solid #ff5555;
+    border-radius: 8px;
+    padding: 12px;
+    color: #fff;
+    font-size: 1.1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Фикс для выпадающего списка, чтобы элементы внутри имели темный фон */
+select option {
+    background: #150606;
+    color: #fff;
+}
+
+input:focus, select:focus {
+    border-color: #ff2a2a;
+    box-shadow: 0 0 10px rgba(255, 42, 42, 0.5);
+}
+
+/* КНОПКИ */
+.btn {
+    display: inline-block;
+    width: 100%;
+    background: linear-gradient(90deg, #8b0000, #ff2a2a);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 42, 42, 0.4);
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 42, 42, 0.6);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn:disabled {
+    background: #331a1a;
+    color: #666;
+    border: 1px solid #553333;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-secondary {
+    background: linear-gradient(90deg, #2c3e50, #34495e);
+    box-shadow: 0 4px 15px rgba(52, 73, 94, 0.4);
+}
+
+/* МЕХАНИКА КАРТЫ (3D ЭФФЕКТ) */
+.card-container {
+    perspective: 1000px;
+    width: 240px;
+    height: 340px;
+    margin: 30px auto;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border: 3px solid #ff2a2a;
+}
+
+.card-front {
+    background: linear-gradient(135deg, #2b0b0b, #4a1515);
+    color: #ffcccc;
+}
+
+.card-front .icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(255, 42, 42, 0.6);
+}
+
+.card-back {
+    background: linear-gradient(135deg, #111, #222);
+    transform: rotateY(180deg);
+}
+
+.role-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.role-crew { color: #2ecc71; text-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
+.role-imposter { color: #e74c3c; text-shadow: 0 0 10px rgba(231, 76, 60, 0.5); }
+
+.secret-word-box {
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    width: 100%;
+}
+
+.word-highlight {
+    color: #00ffff;
+    font-size: 1.4rem;
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+}
+
+/* ТАЙМЕР */
+.timer-display {
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: monospace;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    margin: 20px 0 40px 0;
+}
+
+.game-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* МОДАЛЬНОЕ ОКНО */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+/* СЕТКА ГОЛОСОВАНИЯ */
+.voting-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.vote-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: 1px solid #555;
+    padding: 15px 10px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.vote-btn.selected {
+    background: #ff2a2a;
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 42, 42, 0.6);
+    transform: scale(1.03);
+}
+
+/* ЭКРАН РЕЗУЛЬТАТОВ */
+.winner-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.win-imposter { color: #ff2a2a; text-shadow: 0 0 15px rgba(255,42,42,0.6); }
+.win-crew { color: #2ecc71; text-shadow: 0 0 15px rgba(46,204,113,0.6); }
+
+.stats-container {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: left;
+    margin: 25px 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #442222;
+}
+
+.stat-line {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 1rem;
+}
+.stat-line:last-child { border-bottom: none; }
+.accent-text { color: #ff8e8e; }
